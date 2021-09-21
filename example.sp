@@ -1,6 +1,5 @@
 #include <sourcemod>
-#include <sdktools>
-#include <sdkhooks>
+#include <discordEmbedAPI>
 #pragma newdecls required
 #pragma semicolon 1
 
@@ -17,5 +16,6 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
-
+	DiscordEmbed embed = new DiscordEmbed();
+	embed.setColor(12000);
 }
