@@ -1,130 +1,5 @@
 ﻿#include <ripext>
 
-methodmap Embed < JSONObject
-{
-	public Embed() 
-	{
-		JSONObject jsonObject = new JSONObject();
-		// Required for webhook embeds
-		jsonObject.SetString("type", "rich");
-		return view_as<Embed>(jsonObject);
-	}
-
-	/**
-	 * Retrieve the title of the embed.
-	 * 
-	 * @param szBuffer        String buffer to store value.
-	 * @param iBufferSize     Maximum length of the string buffer.
-	 * @return                True on success. False otherwise.
-	 */
-	public bool GetTitle(char[] buffer, int maxlength)
-	{
-		return this.GetString("title", buffer, maxlength);
-	}
-
-	/**
-	 * Set the title of the embed.
-	 * 
-	 * @param title     Title of the embed.
-	 * @return          True on success. False otherwise.
-	 */
-	public bool SetTitle(const char[] title)
-	{
-		return this.SetString("title", title);
-	}
-
-	/**
-	 * Retrieve the description of the embed.
-	 * 
-	 * @param buffer        String buffer to store value.
-	 * @param maxlength     Maximum length of the string buffer.
-	 * @return              True on success. False otherwise.
-	 */
-	public bool GetDescription(char[] buffer, int maxlength)
-	{
-		return this.GetString("description", buffer, maxlength);
-	}
-
-	/**
-	 * Set the description of the embed.
-	 * 
-	 * @param description   Description of the embed.
-	 * @return          		True on success. False otherwise.
-	 */
-	public bool SetDescription(const char[] description)
-	{
-		return this.SetString("description", description);
-	}
-
-	/**
-	 * Retrieve the URL of the embed.
-	 * 
-	 * @param buffer        String buffer to store value.
-	 * @param maxlength     Maximum length of the string buffer.
-	 * @return              True on success. False otherwise.
-	 */
-	public bool GetURL(char[] buffer, int maxlength)
-	{
-		return this.GetString("url", buffer, maxlength);
-	}
-
-	/**
-	 * Set the URL of the embed.
-	 * 
-	 * @param url   	URL of the embed.
-	 * @return        True on success. False otherwise.
-	 */
-	public bool SetURL(const char[] url)
-	{
-		return this.SetString("url", url);
-	}
-
-	/**
-	 * Retrieve the timestamp of the embed.
-	 * 
-	 * @param buffer        String buffer to store value.
-	 * @param maxlength     Maximum length of the string buffer.
-	 * @return              True on success. False otherwise.
-	 */
-	public bool GetTimeStamp(char[] buffer, int maxlength)
-	{
-		return this.GetString("timestamp", buffer, maxlength);
-	}
-
-	/**
-	 * Set the timestamp of the embed.
-	 * Note that the webhook will error out if the timestamp is not ISO 8601 complient.
-	 * Example: 1977-04-22T06:00:00Z
-	 * 
-	 * @param timestamp   	Timestamp of the embed.
-	 * @return        			True on success. False otherwise.
-	 */
-	public bool SetTimeStamp(const char[] timestamp)
-	{
-		return this.SetString("timestamp", timestamp);
-	}
-
-	/**
-	 * Retrieve the timestamp of the embed.
-	 * 
-	 * @return    Int value of the color.
-	 */
-	public int GetColor()
-	{
-		return this.GetInt("color");
-	}
-
-	/**
-	 * Set the color of the embed.
-	 * 
-	 * @param color   	Color code of the embed.
-	 * @return        	True on success. False otherwise.
-	 */
-	public bool SetColor(int color)
-	{
-		return this.SetInt("color", color);
-	}
-}
 
 
 methodmap EmbedFooter < JSONObject
@@ -558,5 +433,257 @@ methodmap EmbedField < JSONObject
 	public bool SetInline(bool inline)
 	{
 		return this.SetBool("inline", inline);
+	}
+}
+
+methodmap Embed < JSONObject
+{
+	public Embed() 
+	{
+		JSONObject jsonObject = new JSONObject();
+		// Required for webhook embeds
+		jsonObject.SetString("type", "rich");
+		return view_as<Embed>(jsonObject);
+	}
+
+	/**
+	 * Retrieve the title of the embed.
+	 * 
+	 * @param szBuffer        String buffer to store value.
+	 * @param iBufferSize     Maximum length of the string buffer.
+	 * @return                True on success. False otherwise.
+	 */
+	public bool GetTitle(char[] buffer, int maxlength)
+	{
+		return this.GetString("title", buffer, maxlength);
+	}
+
+	/**
+	 * Set the title of the embed.
+	 * 
+	 * @param title     Title of the embed.
+	 * @return          True on success. False otherwise.
+	 */
+	public bool SetTitle(const char[] title)
+	{
+		return this.SetString("title", title);
+	}
+
+	/**
+	 * Retrieve the description of the embed.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetDescription(char[] buffer, int maxlength)
+	{
+		return this.GetString("description", buffer, maxlength);
+	}
+
+	/**
+	 * Set the description of the embed.
+	 * 
+	 * @param description   Description of the embed.
+	 * @return          		True on success. False otherwise.
+	 */
+	public bool SetDescription(const char[] description)
+	{
+		return this.SetString("description", description);
+	}
+
+	/**
+	 * Retrieve the URL of the embed.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("url", buffer, maxlength);
+	}
+
+	/**
+	 * Set the URL of the embed.
+	 * 
+	 * @param url   	URL of the embed.
+	 * @return        True on success. False otherwise.
+	 */
+	public bool SetURL(const char[] url)
+	{
+		return this.SetString("url", url);
+	}
+
+	/**
+	 * Retrieve the timestamp of the embed.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetTimeStamp(char[] buffer, int maxlength)
+	{
+		return this.GetString("timestamp", buffer, maxlength);
+	}
+
+	/**
+	 * Set the timestamp of the embed.
+	 * Note that the webhook will error out if the timestamp is not ISO 8601 complient.
+	 * Example: 1977-04-22T06:00:00Z
+	 * 
+	 * @param timestamp   	Timestamp of the embed.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetTimeStamp(const char[] timestamp)
+	{
+		return this.SetString("timestamp", timestamp);
+	}
+
+	/**
+	 * Retrieve the timestamp of the embed.
+	 * 
+	 * @return    Int value of the color.
+	 */
+	public int GetColor()
+	{
+		return this.GetInt("color");
+	}
+
+	/**
+	 * Set the color of the embed.
+	 * 
+	 * @param color   	Color code of the embed.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetColor(int color)
+	{
+		return this.SetInt("color", color);
+	}
+
+	/**
+	 * Retrieve the footer of the embed.
+	 * 
+	 * @return    Footer of the embed.
+	 */
+	public EmbedFooter GetFooter()
+	{
+		return view_as<EmbedFooter>(this.Get("footer"));
+	}
+
+	/**
+	 * Set the footer of the embed.
+	 * 
+	 * @param footer   	Footer of the embed.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetFooter(EmbedFooter footer)
+	{
+		return this.Set("footer", view_as<JSON>(footer));
+	}
+
+	/**
+	 * Retrieve the image of the embed.
+	 * 
+	 * @return    Image of the embed.
+	 */
+	public EmbedImage GetImage()
+	{
+		return view_as<EmbedImage>(this.Get("image"));
+	}
+
+	/**
+	 * Set the image of the embed.
+	 * 
+	 * @param image   	Image of the embed.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetImage(EmbedImage image)
+	{
+		return this.Set("image", view_as<JSON>(image));
+	}
+
+	/**
+	 * Retrieve the thumbnail of the embed.
+	 * 
+	 * @return    Thumbnail of the embed.
+	 */
+	public EmbedThumbnail GetThumbnail()
+	{
+		return view_as<EmbedThumbnail>(this.Get("thumbnail"));
+	}
+
+	/**
+	 * Set the thumbnail of the embed.
+	 * 
+	 * @param thumbnail   	Thumbnail of the embed.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetThumbnail(EmbedThumbnail thumbnail)
+	{
+		return this.Set("thumbnail", view_as<JSON>(thumbnail));
+	}
+
+	/**
+	 * Retrieve the video of the embed.
+	 * 
+	 * @return    Video of the embed.
+	 */
+	public EmbedVideo GetVideo()
+	{
+		return view_as<EmbedVideo>(this.Get("video"));
+	}
+
+	/**
+	 * Set the video of the embed.
+	 * 
+	 * @param video   			Video of the embed.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetVideo(EmbedVideo video)
+	{
+		return this.Set("video", view_as<JSON>(video));
+	}
+
+	/**
+	 * Retrieve the provider of the embed.
+	 * 
+	 * @return    Provider of the embed.
+	 */
+	public EmbedProvider GetProvider()
+	{
+		return view_as<EmbedProvider>(this.Get("provider"));
+	}
+
+	/**
+	 * Set the provider of the embed.
+	 * 
+	 * @param provider   			Provider of the embed.
+	 * @return        				True on success. False otherwise.
+	 */
+	public bool SetProvider(EmbedProvider provider)
+	{
+		return this.Set("provider", view_as<JSON>(provider));
+	}
+
+	/**
+	 * Retrieve the author of the embed.
+	 * 
+	 * @return    Author of the embed.
+	 */
+	public EmbedAuthor GetAuthor()
+	{
+		return view_as<EmbedAuthor>(this.Get("author"));
+	}
+
+	/**
+	 * Set the author of the embed.
+	 * 
+	 * @param author   			Author of the embed.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetAuthor(EmbedAuthor author)
+	{
+		return this.Set("author", view_as<JSON>(author));
 	}
 }
