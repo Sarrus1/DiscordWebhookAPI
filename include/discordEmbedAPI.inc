@@ -216,7 +216,7 @@ methodmap EmbedImage < JSONObject
 	}
 
 	/**
-	 * Retrieve the source url of the image.
+	 * Retrieve the source url of the media.
 	 * 
 	 * @param buffer        String buffer to store value.
 	 * @param maxlength     Maximum length of the string buffer.
@@ -228,10 +228,10 @@ methodmap EmbedImage < JSONObject
 	}
 
 	/**
-	 * Set the source url of the image.
+	 * Set the source url of the media.
 	 * Note : this only supports http(s).
 	 * 
-	 * @param url   		URL of the image.
+	 * @param url   		URL of the media.
 	 * @return        	True on success. False otherwise.
 	 */
 	public bool SetURL(const char[] url)
@@ -240,7 +240,7 @@ methodmap EmbedImage < JSONObject
 	}
 
 	/**
-	 * Retrieve the proxied URL of the image.
+	 * Retrieve the proxied URL of the media.
 	 * 
 	 * @param buffer        String buffer to store value.
 	 * @param maxlength     Maximum length of the string buffer.
@@ -252,9 +252,9 @@ methodmap EmbedImage < JSONObject
 	}
 
 	/**
-	 * Set a proxied URL of the image.
+	 * Set a proxied URL of the media.
 	 * 
-	 * @param proxy_url   		Proxy URL of the image.
+	 * @param proxy_url   		Proxy URL of the media.
 	 * @return        				True on success. False otherwise.
 	 */
 	public bool SetProxyURL(const char[] proxy_url)
@@ -263,9 +263,9 @@ methodmap EmbedImage < JSONObject
 	}
 
 	/**
-	 * Retrieve the height of the image.
+	 * Retrieve the height of the media.
 	 * 
-	 * @return    Int value of the image.
+	 * @return    Int value of the media.
 	 */
 	public int GetHeight()
 	{
@@ -273,9 +273,9 @@ methodmap EmbedImage < JSONObject
 	}
 
 	/**
-	 * Set the height of the image.
+	 * Set the height of the media.
 	 * 
-	 * @param height   	Height of the image.
+	 * @param height   	Height of the media.
 	 * @return        	True on success. False otherwise.
 	 */
 	public bool SetHeight(int height)
@@ -284,9 +284,9 @@ methodmap EmbedImage < JSONObject
 	}
 
 	/**
-	 * Retrieve the width of the image.
+	 * Retrieve the width of the media.
 	 * 
-	 * @return    Int value of the image.
+	 * @return    Int value of the media.
 	 */
 	public int GetWidth()
 	{
@@ -294,9 +294,9 @@ methodmap EmbedImage < JSONObject
 	}
 
 	/**
-	 * Set the width of the image.
+	 * Set the width of the media.
 	 * 
-	 * @param width   	Width of the image.
+	 * @param width   	Width of the media.
 	 * @return        	True on success. False otherwise.
 	 */
 	public bool SetWidth(int width)
@@ -306,100 +306,21 @@ methodmap EmbedImage < JSONObject
 }
 
 
-methodmap EmbedThumbnail < JSONObject
+methodmap EmbedThumbnail < EmbedImage
 {
 	public EmbedThumbnail() 
 	{
 		JSONObject jsonObject = new JSONObject();
 		return view_as<EmbedThumbnail>(jsonObject);
 	}
+}
 
-	/**
-	 * Retrieve the source url of the thumbnail.
-	 * 
-	 * @param buffer        String buffer to store value.
-	 * @param maxlength     Maximum length of the string buffer.
-	 * @return              True on success. False otherwise.
-	 */
-	public bool GetURL(char[] buffer, int maxlength)
-	{
-		return this.GetString("url", buffer, maxlength);
-	}
 
-	/**
-	 * Set the source url of the thumbnail.
-	 * Note : this only supports http(s).
-	 * 
-	 * @param url   		URL of the thumbnail.
-	 * @return        	True on success. False otherwise.
-	 */
-	public bool SetURL(const char[] url)
+methodmap EmbedVideo < EmbedImage
+{
+	public EmbedVideo() 
 	{
-		return this.SetString("url", url);
-	}
-
-	/**
-	 * Retrieve the proxied URL of the thumbnail.
-	 * 
-	 * @param buffer        String buffer to store value.
-	 * @param maxlength     Maximum length of the string buffer.
-	 * @return              True on success. False otherwise.
-	 */
-	public bool GetProxyURL(char[] buffer, int maxlength)
-	{
-		return this.GetString("proxy_url", buffer, maxlength);
-	}
-
-	/**
-	 * Set a proxied URL of the thumbnail.
-	 * 
-	 * @param proxy_url   		Proxy URL of the thumbnail.
-	 * @return        				True on success. False otherwise.
-	 */
-	public bool SetProxyURL(const char[] proxy_url)
-	{
-		return this.SetString("proxy_url", proxy_url);
-	}
-
-	/**
-	 * Retrieve the height of the thumbnail.
-	 * 
-	 * @return    Int value of the thumbnail.
-	 */
-	public int GetHeight()
-	{
-		return this.GetInt("height");
-	}
-
-	/**
-	 * Set the height of the thumbnail.
-	 * 
-	 * @param height   	Height of the thumbnail.
-	 * @return        	True on success. False otherwise.
-	 */
-	public bool SetHeight(int height)
-	{
-		return this.SetInt("height", height);
-	}
-
-	/**
-	 * Retrieve the width of the thumbnail.
-	 * 
-	 * @return    Int value of the thumbnail.
-	 */
-	public int GetWidth()
-	{
-		return this.GetInt("width");
-	}
-
-	/**
-	 * Set the width of the thumbnail.
-	 * 
-	 * @param width   	Width of the thumbnail.
-	 * @return        	True on success. False otherwise.
-	 */
-	public bool SetWidth(int width)
-	{
-		return this.SetInt("width", width);
+		JSONObject jsonObject = new JSONObject();
+		return view_as<EmbedVideo>(jsonObject);
 	}
 }
