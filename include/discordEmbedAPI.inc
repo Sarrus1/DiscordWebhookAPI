@@ -324,3 +324,59 @@ methodmap EmbedVideo < EmbedImage
 		return view_as<EmbedVideo>(jsonObject);
 	}
 }
+
+
+methodmap EmbedProvider < JSONObject
+{
+	public EmbedProvider() 
+	{
+		JSONObject jsonObject = new JSONObject();
+		return view_as<EmbedProvider>(jsonObject);
+	}
+
+	/**
+	 * Retrieve the name of the provider.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetName(char[] buffer, int maxlength)
+	{
+		return this.GetString("name", buffer, maxlength);
+	}
+
+	/**
+	 * Set the name of the provider.
+	 * 
+	 * @param name   		Name of the provider.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetProxyURL(const char[] name)
+	{
+		return this.SetString("name", name);
+	}
+
+		/**
+	 * Retrieve the source url of the provider.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("url", buffer, maxlength);
+	}
+
+	/**
+	 * Set the source url of the provider.
+	 * 
+	 * @param url   		URL of the provider.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetURL(const char[] url)
+	{
+		return this.SetString("url", url);
+	}
+}
