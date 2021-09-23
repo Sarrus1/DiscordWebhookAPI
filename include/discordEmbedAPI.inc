@@ -484,3 +484,79 @@ methodmap EmbedAuthor < JSONObject
 	}
 }
 
+
+methodmap EmbedField < JSONObject
+{
+	public EmbedField() 
+	{
+		JSONObject jsonObject = new JSONObject();
+		return view_as<EmbedField>(jsonObject);
+	}
+
+	/**
+	 * Retrieve the name of the field.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetName(char[] buffer, int maxlength)
+	{
+		return this.GetString("name", buffer, maxlength);
+	}
+
+	/**
+	 * Set the name of the field.
+	 * 
+	 * @param name   				Name of the field.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetName(const char[] name)
+	{
+		return this.SetString("name", name);
+	}
+
+	/**
+	 * Retrieve the value of the field.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetValue(char[] buffer, int maxlength)
+	{
+		return this.GetString("value", buffer, maxlength);
+	}
+
+	/**
+	 * Set the value of the field.
+	 * 
+	 * @param value   	Value of the field.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetValue(const char[] value)
+	{
+		return this.SetString("value", value);
+	}
+
+	/**
+	 * Retrieve the inline parameter of the field.
+	 * 
+	 * @return			The bool value of the inline parameter.
+	 */
+	public bool GetInline()
+	{
+		return this.GetBool("inline");
+	}
+
+	/**
+	 * Set whether or not this field should display inline.
+	 * 
+	 * @param inline   			Bool value of the inline parameter.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetInline(bool inline)
+	{
+		return this.SetBool("inline", inline);
+	}
+}
