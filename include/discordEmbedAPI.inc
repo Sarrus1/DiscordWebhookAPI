@@ -686,4 +686,34 @@ methodmap Embed < JSONObject
 	{
 		return this.Set("author", view_as<JSON>(author));
 	}
+
+	/**
+	 * Retrieve the fields of the embed.
+	 * 
+	 * @return    JSONArray containing the fields of the embed.
+	 */
+	public JSONArray GetFields()
+	{
+		return view_as<JSONArray>(this.Get("fields"));
+	}
+
+	/**
+	 * Add a field to the embed.
+	 * 
+	 * @param field   			Field to add to the embed.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool AddField(EmbedField field)
+	{
+		JSONArray fields;
+		if(this.HasKey("fields"))
+		{
+			fields = view_as<JSONArray>(this.Get("fields"));
+		}
+		if(fields.Push(view_as<JSON>(field)))
+		{
+			return this.Set("fields", fields);
+		}
+		return false;
+	}
 }
