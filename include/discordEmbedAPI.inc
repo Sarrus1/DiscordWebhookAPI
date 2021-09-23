@@ -1,19 +1,17 @@
 ﻿#include <ripext>
 
-int iColor;
-
-methodmap DiscordEmbed < JSONObject
+methodmap Embed < JSONObject
 {
-	public DiscordEmbed() 
+	public Embed() 
 	{
 		JSONObject jsonObject = new JSONObject();
 		// Required for webhook embeds
 		jsonObject.SetString("type", "rich");
-		return view_as<DiscordEmbed>(jsonObject);
+		return view_as<Embed>(jsonObject);
 	}
 
 	/**
-	 * Retrieves the title of the embed.
+	 * Retrieve the title of the embed.
 	 * 
 	 * @param szBuffer        String buffer to store value.
 	 * @param iBufferSize     Maximum length of the string buffer.
@@ -36,7 +34,7 @@ methodmap DiscordEmbed < JSONObject
 	}
 
 	/**
-	 * Retrieves the description of the embed.
+	 * Retrieve the description of the embed.
 	 * 
 	 * @param buffer        String buffer to store value.
 	 * @param maxlength     Maximum length of the string buffer.
@@ -59,7 +57,7 @@ methodmap DiscordEmbed < JSONObject
 	}
 
 	/**
-	 * Retrieves the URL of the embed.
+	 * Retrieve the URL of the embed.
 	 * 
 	 * @param buffer        String buffer to store value.
 	 * @param maxlength     Maximum length of the string buffer.
@@ -82,7 +80,7 @@ methodmap DiscordEmbed < JSONObject
 	}
 
 	/**
-	 * Retrieves the timestamp of the embed.
+	 * Retrieve the timestamp of the embed.
 	 * 
 	 * @param buffer        String buffer to store value.
 	 * @param maxlength     Maximum length of the string buffer.
@@ -106,7 +104,7 @@ methodmap DiscordEmbed < JSONObject
 	}
 
 	/**
-	 * Retrieves the timestamp of the embed.
+	 * Retrieve the timestamp of the embed.
 	 * 
 	 * @return    Int value of the color.
 	 */
@@ -124,5 +122,85 @@ methodmap DiscordEmbed < JSONObject
 	public bool SetColor(int color)
 	{
 		return this.SetInt("color", color);
+	}
+}
+
+
+methodmap EmbedFooter < JSONObject
+{
+	public EmbedFooter() 
+	{
+		JSONObject jsonObject = new JSONObject();
+		return view_as<EmbedFooter>(jsonObject);
+	}
+
+	/**
+	 * Retrieve the text of the footer.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetText(char[] buffer, int maxlength)
+	{
+		return this.GetString("text", buffer, maxlength);
+	}
+
+	/**
+	 * Set the text of the footer.
+	 * 
+	 * @param text   				Text of the footer.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetText(const char[] text)
+	{
+		return this.SetString("text", text);
+	}
+
+	/**
+	 * Retrieve the url of the footer icon.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetIconURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("icon_url", buffer, maxlength);
+	}
+
+	/**
+	 * Set the url of the footer icon.
+	 * Note : this only supports http(s).
+	 * 
+	 * @param icon_url   		IconURL of the embed.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetIconURL(const char[] icon_url)
+	{
+		return this.SetString("icon_url", icon_url);
+	}
+
+	/**
+	 * Retrieve the proxy_icon_url of the footer.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetProxyIconURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("proxy_icon_url", buffer, maxlength);
+	}
+
+	/**
+	 * Set a proxied url of the footer icon.
+	 * 
+	 * @param proxy_icon_url   		IconURL of the embed.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetProxyIconURL(const char[] proxy_icon_url)
+	{
+		return this.SetString("proxy_icon_url", proxy_icon_url);
 	}
 }
