@@ -698,12 +698,27 @@ methodmap Embed < JSONObject
 	}
 
 	/**
+	 * Retrieve a field of the embed.
+	 * 
+	 * @return    Field corresponding to the input index.
+	 */
+	public EmbedField GetField(int index)
+	{
+		JSONArray fields = view_as<JSONArray>(this.Get("fields"));
+		if(fields != null)
+		{
+			return view_as<EmbedField>(fields.Get(index));
+		}
+		return null;
+	}
+
+	/**
 	 * Add a field to the embed.
 	 * 
 	 * @param field   			Field to add to the embed.
-	 * @return        			True on success. False otherwise.
+	 * @return        			The number of fields after the new one was added. -1 otherwise.
 	 */
-	public bool AddField(EmbedField field)
+	public int AddField(EmbedField field)
 	{
 		JSONArray fields;
 		if(this.HasKey("fields"))
@@ -712,8 +727,11 @@ methodmap Embed < JSONObject
 		}
 		if(fields.Push(view_as<JSON>(field)))
 		{
-			return this.Set("fields", fields);
+			if(this.Set("fields", fields))
+			{
+				return fields.Length;
+			}
 		}
-		return false;
+		return -1;
 	}
 }
