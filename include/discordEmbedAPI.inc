@@ -700,12 +700,12 @@ methodmap Embed < JSONObject
 	/**
 	 * Retrieve a field of the embed.
 	 * 
-	 * @return    Field corresponding to the input index.
+	 * @return    Field corresponding to the input index. null if an error occurs.
 	 */
 	public EmbedField GetField(int index)
 	{
 		JSONArray fields = view_as<JSONArray>(this.Get("fields"));
-		if(fields != null)
+		if(fields != null && fields.Length < index)
 		{
 			return view_as<EmbedField>(fields.Get(index));
 		}
