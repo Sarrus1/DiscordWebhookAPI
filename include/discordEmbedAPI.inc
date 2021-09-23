@@ -174,7 +174,7 @@ methodmap EmbedFooter < JSONObject
 	 * Set the url of the footer icon.
 	 * Note : this only supports http(s).
 	 * 
-	 * @param icon_url   		IconURL of the embed.
+	 * @param icon_url   		IconURL of the footer.
 	 * @return        			True on success. False otherwise.
 	 */
 	public bool SetIconURL(const char[] icon_url)
@@ -197,7 +197,7 @@ methodmap EmbedFooter < JSONObject
 	/**
 	 * Set a proxied url of the footer icon.
 	 * 
-	 * @param proxy_icon_url   		IconURL of the embed.
+	 * @param proxy_icon_url   		IconURL of the footer.
 	 * @return        						True on success. False otherwise.
 	 */
 	public bool SetProxyIconURL(const char[] proxy_icon_url)
@@ -380,3 +380,107 @@ methodmap EmbedProvider < JSONObject
 		return this.SetString("url", url);
 	}
 }
+
+
+methodmap EmbedAuthor < JSONObject
+{
+	public EmbedAuthor() 
+	{
+		JSONObject jsonObject = new JSONObject();
+		return view_as<EmbedAuthor>(jsonObject);
+	}
+
+	/**
+	 * Retrieve the name of the author.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetName(char[] buffer, int maxlength)
+	{
+		return this.GetString("name", buffer, maxlength);
+	}
+
+	/**
+	 * Set the name of the author.
+	 * 
+	 * @param name   				Name of the author.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetName(const char[] name)
+	{
+		return this.SetString("name", name);
+	}
+
+	/**
+	 * Retrieve the url of the author.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("url", buffer, maxlength);
+	}
+
+	/**
+	 * Set the url of the author.
+	 * 
+	 * @param url   	URL of the author.
+	 * @return        True on success. False otherwise.
+	 */
+	public bool SetURL(const char[] url)
+	{
+		return this.SetString("url", url);
+	}
+
+	/**
+	 * Retrieve the icon_url of the author.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetIconURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("icon_url", buffer, maxlength);
+	}
+
+	/**
+	 * Set the icon_url of the author.
+	 * Note : this only supports http(s).
+	 * 
+	 * @param icon_url   		IconURL of the author.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetIconURL(const char[] icon_url)
+	{
+		return this.SetString("icon_url", icon_url);
+	}
+
+	/**
+	 * Retrieve the proxy_icon_url of the author.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetProxyIconURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("proxy_icon_url", buffer, maxlength);
+	}
+
+	/**
+	 * Set a proxied url of the author.
+	 * 
+	 * @param proxy_icon_url   		IconURL of the author.
+	 * @return        						True on success. False otherwise.
+	 */
+	public bool SetProxyIconURL(const char[] proxy_icon_url)
+	{
+		return this.SetString("proxy_icon_url", proxy_icon_url);
+	}
+}
+
