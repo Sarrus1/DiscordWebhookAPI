@@ -225,7 +225,7 @@ methodmap EmbedProvider < JSONObject
 	 * @param name   		Name of the provider.
 	 * @return        	True on success. False otherwise.
 	 */
-	public bool SetProxyURL(const char[] name)
+	public bool SetName(const char[] name)
 	{
 		return this.SetString("name", name);
 	}
