@@ -439,8 +439,7 @@ methodmap Embed < JSONObject
 	public Embed() 
 	{
 		JSONObject jsonObject = new JSONObject();
-		// Required for webhook embeds
-		jsonObject.SetString("type", "rich");
+		jsonObject.SetInt("color", 0);
 		return view_as<Embed>(jsonObject);
 	}
 
@@ -723,6 +722,10 @@ methodmap Embed < JSONObject
 		{
 			fields = view_as<JSONArray>(this.Get("fields"));
 		}
+		else
+		{
+			fields = new JSONArray();
+		}
 		if(fields.Push(view_as<JSON>(field)))
 		{
 			if(this.Set("fields", fields))
@@ -871,6 +874,10 @@ methodmap Webhook < JSONObject
 		{
 			embeds = view_as<JSONArray>(this.Get("embeds"));
 		}
+		else
+		{
+			embeds = new JSONArray();
+		}
 		if(embeds.Push(view_as<JSON>(embed)))
 		{
 			if(this.Set("embeds", embeds))
@@ -879,5 +886,19 @@ methodmap Webhook < JSONObject
 			}
 		}
 		return -1;
+	}
+
+	/**
+	 * Execute the webhook
+	 * 
+	 * @param webhook      URL of the webhook.
+	 * @param callback     Callback function called when the HTTP request has been processed.
+	 * @param data         Optional value to pass to the callback function.
+	 */
+	public void Execute(const char[] webhook, HTTPRequestCallback callback, any data = 0)
+	{
+		HTTPRequest httpRequest = new HTTPRequest(webhook);
+		httpRequest.Post(view_as<JSON>(this), callback, data);
+		return;
 	}
 }
