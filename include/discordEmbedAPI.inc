@@ -94,6 +94,7 @@ methodmap Embed < JSONObject
 	/**
 	 * Set the timestamp of the embed.
 	 * Note that the webhook will error out if the timestamp is not ISO 8601 complient.
+	 * Example: 1977-04-22T06:00:00Z
 	 * 
 	 * @param timestamp   	Timestamp of the embed.
 	 * @return        			True on success. False otherwise.
@@ -197,10 +198,109 @@ methodmap EmbedFooter < JSONObject
 	 * Set a proxied url of the footer icon.
 	 * 
 	 * @param proxy_icon_url   		IconURL of the embed.
-	 * @return        			True on success. False otherwise.
+	 * @return        						True on success. False otherwise.
 	 */
 	public bool SetProxyIconURL(const char[] proxy_icon_url)
 	{
 		return this.SetString("proxy_icon_url", proxy_icon_url);
+	}
+}
+
+
+methodmap EmbedImage < JSONObject
+{
+	public EmbedImage() 
+	{
+		JSONObject jsonObject = new JSONObject();
+		return view_as<EmbedImage>(jsonObject);
+	}
+
+	/**
+	 * Retrieve the source url of the image.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("url", buffer, maxlength);
+	}
+
+	/**
+	 * Set the source url of the image.
+	 * Note : this only supports http(s).
+	 * 
+	 * @param url   		URL of the image.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetURL(const char[] url)
+	{
+		return this.SetString("url", url);
+	}
+
+	/**
+	 * Retrieve the proxied URL of the image.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetProxyURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("proxy_url", buffer, maxlength);
+	}
+
+	/**
+	 * Set a proxied URL of the image.
+	 * 
+	 * @param proxy_url   		Proxy URL of the image.
+	 * @return        				True on success. False otherwise.
+	 */
+	public bool SetProxyURL(const char[] proxy_url)
+	{
+		return this.SetString("proxy_url", proxy_url);
+	}
+
+	/**
+	 * Retrieve the height of the image.
+	 * 
+	 * @return    Int value of the image.
+	 */
+	public int GetHeight()
+	{
+		return this.GetInt("height");
+	}
+
+	/**
+	 * Set the height of the image.
+	 * 
+	 * @param height   	Height of the image.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetHeight(int height)
+	{
+		return this.SetInt("height", height);
+	}
+
+	/**
+	 * Retrieve the width of the image.
+	 * 
+	 * @return    Int value of the image.
+	 */
+	public int GetWidth()
+	{
+		return this.GetInt("width");
+	}
+
+	/**
+	 * Set the width of the image.
+	 * 
+	 * @param width   	Width of the image.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetWidth(int width)
+	{
+		return this.SetInt("width", width);
 	}
 }
