@@ -1,7 +1,5 @@
 ﻿#include <ripext>
 
-
-
 methodmap EmbedFooter < JSONObject
 {
 	public EmbedFooter() 
@@ -690,7 +688,7 @@ methodmap Embed < JSONObject
 	/**
 	 * Retrieve the fields of the embed.
 	 * 
-	 * @return    JSONArray containing the fields of the embed.
+	 * @return    JSONArray containing the fields of the embed from its index.
 	 */
 	public JSONArray GetFields()
 	{
@@ -730,6 +728,154 @@ methodmap Embed < JSONObject
 			if(this.Set("fields", fields))
 			{
 				return fields.Length;
+			}
+		}
+		return -1;
+	}
+}
+
+
+methodmap Webhook < JSONObject
+{
+	public Webhook() 
+	{
+		JSONObject jsonObject = new JSONObject();
+		return view_as<Webhook>(jsonObject);
+	}
+
+	/**
+	 * Retrieve the content of the webhook.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetContent(char[] buffer, int maxlength)
+	{
+		return this.GetString("content", buffer, maxlength);
+	}
+
+	/**
+	 * Set the content of the webhook.
+	 * 
+	 * @param content   		Content of the webhook.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetContent(const char[] content)
+	{
+		return this.SetString("content", content);
+	}
+
+	/**
+	 * Retrieve the username of the webhook.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetUsername(char[] buffer, int maxlength)
+	{
+		return this.GetString("username", buffer, maxlength);
+	}
+
+	/**
+	 * Set the username of the webhook.
+	 * 
+	 * @param username   		Username of the webhook.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetUsername(const char[] username)
+	{
+		return this.SetString("username", username);
+	}
+
+	/**
+	 * Retrieve the avatar_url of the webhook.
+	 * 
+	 * @param buffer        String buffer to store value.
+	 * @param maxlength     Maximum length of the string buffer.
+	 * @return              True on success. False otherwise.
+	 */
+	public bool GetAvatarURL(char[] buffer, int maxlength)
+	{
+		return this.GetString("avatar_url", buffer, maxlength);
+	}
+
+	/**
+	 * Set the avatar URL of the webhook.
+	 * 
+	 * @param avatar_url   	Avatar URL of the webhook.
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetAvatarURL(const char[] avatar_url)
+	{
+		return this.SetString("avatar_url", avatar_url);
+	}
+
+	/**
+	 * Retrieve the tts parameter of the webhook.
+	 * 
+	 * @return    Bool representing the tts parameter of the webhook.
+	 */
+	public bool GetTTS()
+	{
+		return this.GetBool("tts");
+	}
+
+	/**
+	 * Set the tts parameter of the webhook.
+	 * 
+	 * @param tts   		TTS parameter of the webhook.
+	 * @return        	True on success. False otherwise.
+	 */
+	public bool SetTTS(bool tts)
+	{
+		return this.SetBool("tts", tts);
+	}
+
+	/**
+	 * Retrieve the embeds of the webhook.
+	 * 
+	 * @return    JSONArray containing the embeds of the webhook.
+	 */
+	public JSONArray GetEmbeds()
+	{
+		return view_as<JSONArray>(this.Get("embeds"));
+	}
+
+	/**
+	 * Retrieve an embed of the webook from its index.
+	 * 
+	 * @return    Embed corresponding to the input index. null if an error occurs.
+	 */
+	public Embed GetEmbed(int index)
+	{
+		JSONArray embeds = view_as<JSONArray>(this.Get("embeds"));
+		if(embeds != null && embeds.Length < index)
+		{
+			return view_as<Embed>(embeds.Get(index));
+		}
+		return null;
+	}
+
+	/**
+	 * Add an embed to the webhook.
+	 * 
+	 * @param embed   			Embed to add to the webhook.
+	 * @return        			The number of embeds after the new one was added. -1 otherwise.
+	 */
+	public int AddEmbed(Embed embed)
+	{
+		JSONArray embeds;
+		if(this.HasKey("embeds"))
+		{
+			embeds = view_as<JSONArray>(this.Get("embeds"));
+		}
+		if(embeds.Push(view_as<JSON>(embed)))
+		{
+			if(this.Set("embeds", embeds))
+			{
+				return embeds.Length;
 			}
 		}
 		return -1;
