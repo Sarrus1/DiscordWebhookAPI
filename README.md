@@ -5,19 +5,12 @@
 
 ## Description ##
 
+An include featuring a complete wrapper of the Discord Webhook API written in SourcePawn using methodmaps and the [RIPExt extension](https://github.com/ErikMinekus/sm-ripext).
 
 ## Requirements ##
 - Sourcemod and Metamod
+- RIPExt extension
 
+## Example
 
-## Installation ##
-1. Grab the latest release from the release page and unzip it in your sourcemod folder.
-2. Restart the server or type `sm plugins load DiscordEmbedAPI` in the console to load the plugin.
-3. The config file will be automatically generated in cfg/sourcemod/
-
-## Configuration ##
-- You can modify the phrases in addons/sourcemod/translations/DiscordEmbedAPI.phrases.txt.
-- Once the plugin has been loaded, you can modify the cvars in cfg/sourcemod/DiscordEmbedAPI.cfg.
-
-
-## Usage ##
+![Example](https://github.com/Sarrus1/DiscordEmbedAPI/blob/master/example.png?raw=true)
