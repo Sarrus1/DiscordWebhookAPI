@@ -19,8 +19,8 @@ jobs:
 
       - name: Set environment variables
         run: |
-          # echo "SCRIPTS_PATH=scripting" >> $GITHUB_ENV
-          echo "SCRIPTS_PATH=scripting" >> $GITHUB_ENV
+          # echo "SCRIPTS_PATH=" >> $GITHUB_ENV
+          echo "SCRIPTS_PATH=" >> $GITHUB_ENV
       - name: Setup SourcePawn Compiler ${{ matrix.SM_VERSION }}
         uses: rumblefrog/setup-sp@master
         with:
