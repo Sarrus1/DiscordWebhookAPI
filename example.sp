@@ -1,16 +1,16 @@
 #include <sourcemod>
-#include <discordEmbedAPI>
+#include <discordWebhookAPI>
 #pragma newdecls required
 #pragma semicolon 1
 
 
 public Plugin myinfo =
 {
-	name = "DiscordEmbedAPI",
+	name = "discordWebhookAPI",
 	author = "Sarrus",
 	description = "",
 	version = "1.0",
-	url = "https://github.com/Sarrus1/DiscordEmbedAPI"
+	url = "https://github.com/Sarrus1/discordWebhookAPI"
 };
 
 ConVar g_cvWebhook;
@@ -32,7 +32,7 @@ public Action SendDiscordWebhook(int client, int args)
 	webhook.SetAvatarURL("https://avatars.githubusercontent.com/u/63302440?v=4");
 
 	Embed embed1 = new Embed("Test embed n°1", "This is the description of the embed n°1.");
-	embed1.SetURL("https://github.com/Sarrus1/DiscordEmbedAPI");
+	embed1.SetURL("https://github.com/Sarrus1/discordWebhookAPI");
 	embed1.SetTimeStampNow();
 	embed1.SetColor(12000);
 

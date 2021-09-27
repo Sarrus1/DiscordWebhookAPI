@@ -590,7 +590,7 @@ methodmap Embed < JSONObject
 	 * Set the timestamp of the embed.
 	 * Note that the webhook will error out if the timestamp is not ISO 8601 complient.
 	 * Example: 1977-04-22T06:00:00Z
-	 * Use FormatTime to format it properly, see https://github.com/Sarrus1/DiscordEmbedAPI/blob/master/example.sp for an example.
+	 * Use FormatTime to format it properly, see https://github.com/Sarrus1/discordWebhookAPI/blob/master/example.sp for an example.
 	 * 
 	 * @param timestamp   	Timestamp of the embed.
 	 * @return        			True on success. False otherwise.
