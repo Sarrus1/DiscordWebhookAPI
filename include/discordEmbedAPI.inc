@@ -2,9 +2,16 @@
 
 methodmap EmbedFooter < JSONObject
 {
-	public EmbedFooter() 
+	/**
+	 * Constructor for the EmbedFooter methodmap.
+	 * 
+	 * @param text     Text of the footer.
+	 * @return         Returns the EmbedFooter.
+	 */
+	public EmbedFooter(const char[] text="") 
 	{
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.SetString("text", text);
 		return view_as<EmbedFooter>(jsonObject);
 	}
 
@@ -82,9 +89,16 @@ methodmap EmbedFooter < JSONObject
 
 methodmap EmbedImage < JSONObject
 {
-	public EmbedImage() 
+	/**
+	 * Constructor for the EmbedImage methodmap.
+	 * 
+	 * @param url     URL of the image.
+	 * @return         Returns the EmbedImage.
+	 */
+	public EmbedImage(const char[] url="") 
 	{
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.SetString("url", url);
 		return view_as<EmbedImage>(jsonObject);
 	}
 
@@ -181,9 +195,16 @@ methodmap EmbedImage < JSONObject
 
 methodmap EmbedThumbnail < EmbedImage
 {
-	public EmbedThumbnail() 
+	/**
+	 * Constructor for the EmbedThumbnail methodmap.
+	 * 
+	 * @param url     URL of the thumbnail.
+	 * @return         Returns the EmbedThumbnail.
+	 */
+	public EmbedThumbnail(const char[] url="") 
 	{
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.SetString("url", url);
 		return view_as<EmbedThumbnail>(jsonObject);
 	}
 }
@@ -191,9 +212,16 @@ methodmap EmbedThumbnail < EmbedImage
 
 methodmap EmbedVideo < EmbedImage
 {
-	public EmbedVideo() 
+	/**
+	 * Constructor for the EmbedVideo methodmap.
+	 * 
+	 * @param url      URL of the video.
+	 * @return         Returns the EmbedVideo.
+	 */
+	public EmbedVideo(const char[] url="") 
 	{
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.SetString("url", url);
 		return view_as<EmbedVideo>(jsonObject);
 	}
 }
@@ -201,9 +229,16 @@ methodmap EmbedVideo < EmbedImage
 
 methodmap EmbedProvider < JSONObject
 {
-	public EmbedProvider() 
+	/**
+	 * Constructor for the EmbedProvider methodmap.
+	 * 
+	 * @param name     Name of the provider.
+	 * @return         Returns the EmbedProvider.
+	 */
+	public EmbedProvider(const char[] name="") 
 	{
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.SetString("name", name);
 		return view_as<EmbedProvider>(jsonObject);
 	}
 
@@ -257,9 +292,16 @@ methodmap EmbedProvider < JSONObject
 
 methodmap EmbedAuthor < JSONObject
 {
-	public EmbedAuthor() 
+	/**
+	 * Constructor for the EmbedAuthor methodmap.
+	 * 
+	 * @param name     Name of the author.
+	 * @return         Returns the EmbedAuthor.
+	 */
+	public EmbedAuthor(const char[] name="") 
 	{
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.SetString("name", name);
 		return view_as<EmbedAuthor>(jsonObject);
 	}
 
@@ -360,9 +402,20 @@ methodmap EmbedAuthor < JSONObject
 
 methodmap EmbedField < JSONObject
 {
-	public EmbedField() 
+	/**
+	 * Constructor for the EmbedField methodmap.
+	 * 
+	 * @param name     Name of the field.
+	 * @param value    Value of the field.
+	 * @param inline   Bool value of the inline @parameter.
+	 * @return         Returns the EmbedField.
+	 */
+	public EmbedField(const char[] name="", const char[] value="", bool inline=true) 
 	{
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.SetString("name", name);
+		jsonObject.SetString("value", value);
+		jsonObject.SetBool("inline", inline);
 		return view_as<EmbedField>(jsonObject);
 	}
 
@@ -413,9 +466,9 @@ methodmap EmbedField < JSONObject
 	}
 
 	/**
-	 * Retrieve the inline parameter of the field.
+	 * Retrieve the inline @parameter of the field.
 	 * 
-	 * @return			The bool value of the inline parameter.
+	 * @return			The bool value of the inline @parameter.
 	 */
 	public bool GetInline()
 	{
@@ -425,7 +478,7 @@ methodmap EmbedField < JSONObject
 	/**
 	 * Set whether or not this field should display inline.
 	 * 
-	 * @param inline   			Bool value of the inline parameter.
+	 * @param inline   			Bool value of the inline @parameter.
 	 * @return        			True on success. False otherwise.
 	 */
 	public bool SetInline(bool inline)
@@ -436,10 +489,19 @@ methodmap EmbedField < JSONObject
 
 methodmap Embed < JSONObject
 {
-	public Embed() 
+	/**
+	 * Constructor for the Embed methodmap.
+	 * 
+	 * @param title          Title of the embed.
+	 * @param description    Description of the embed.
+	 * @return               Returns the Embed.
+	 */
+	public Embed(const char[] title="", const char[] description="") 
 	{
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.SetInt("color", 0);
+		jsonObject.SetString("title", title);
+		jsonObject.SetString("description", description);
 		return view_as<Embed>(jsonObject);
 	}
 
@@ -528,6 +590,7 @@ methodmap Embed < JSONObject
 	 * Set the timestamp of the embed.
 	 * Note that the webhook will error out if the timestamp is not ISO 8601 complient.
 	 * Example: 1977-04-22T06:00:00Z
+	 * Use FormatTime to format it properly, see https://github.com/Sarrus1/DiscordEmbedAPI/blob/master/example.sp for an example.
 	 * 
 	 * @param timestamp   	Timestamp of the embed.
 	 * @return        			True on success. False otherwise.
@@ -535,6 +598,18 @@ methodmap Embed < JSONObject
 	public bool SetTimeStamp(const char[] timestamp)
 	{
 		return this.SetString("timestamp", timestamp);
+	}
+
+	/**
+	 * Set the timestamp of the embed to now.
+	 * 
+	 * @return        			True on success. False otherwise.
+	 */
+	public bool SetTimeStampNow()
+	{
+		char timeNow[256];
+		FormatTime(timeNow, sizeof timeNow, "%FT\%T.000%z", GetTime());
+		return this.SetString("timestamp", timeNow);
 	}
 
 	/**
@@ -740,9 +815,16 @@ methodmap Embed < JSONObject
 
 methodmap Webhook < JSONObject
 {
-	public Webhook() 
+	/**
+	 * Constructor for the Embed methodmap.
+	 * 
+	 * @param content   Content of the webhook.
+	 * @return         Returns the Embed.
+	 */
+	public Webhook(const char[] content="") 
 	{
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.SetString("content", content);
 		return view_as<Webhook>(jsonObject);
 	}
 
@@ -816,9 +898,9 @@ methodmap Webhook < JSONObject
 	}
 
 	/**
-	 * Retrieve the tts parameter of the webhook.
+	 * Retrieve the tts @parameter of the webhook.
 	 * 
-	 * @return    Bool representing the tts parameter of the webhook.
+	 * @return    Bool representing the tts @parameter of the webhook.
 	 */
 	public bool GetTTS()
 	{
@@ -826,9 +908,9 @@ methodmap Webhook < JSONObject
 	}
 
 	/**
-	 * Set the tts parameter of the webhook.
+	 * Set the tts @parameter of the webhook.
 	 * 
-	 * @param tts   		TTS parameter of the webhook.
+	 * @param tts   		TTS @parameter of the webhook.
 	 * @return        	True on success. False otherwise.
 	 */
 	public bool SetTTS(bool tts)

@@ -27,26 +27,21 @@ public void OnPluginStart()
 
 public Action SendDiscordWebhook(int client, int args)
 {
-	Webhook webhook = new Webhook();
-	webhook.SetContent("This is the content of the webhook.");
+	Webhook webhook = new Webhook("This is the content of the webhook.");
 	webhook.SetUsername("Sarrus");
 	webhook.SetAvatarURL("https://avatars.githubusercontent.com/u/63302440?v=4");
 
-	Embed embed1 = new Embed();
-	embed1.SetTitle("Test embed n°1");
-	embed1.SetDescription("This is the description of the embed n°1.");
+	Embed embed1 = new Embed("Test embed n°1", "This is the description of the embed n°1.");
 	embed1.SetURL("https://github.com/Sarrus1/DiscordEmbedAPI");
-	embed1.SetTimeStamp("1999-11-05T23:15:10.000Z");
+	embed1.SetTimeStampNow();
 	embed1.SetColor(12000);
 
-	EmbedFooter footer1 = new EmbedFooter();
-	footer1.SetText("Test embed footer n°1");
+	EmbedFooter footer1 = new EmbedFooter("Test embed footer n°1");
 	footer1.SetIconURL("https://img.icons8.com/cotton/64/000000/server.png");					// Optional
 
 	embed1.SetFooter(footer1);
 
-	EmbedImage image1 = new EmbedImage();
-	image1.SetURL("https://avatars.githubusercontent.com/u/63302440?v=4");
+	EmbedImage image1 = new EmbedImage("https://avatars.githubusercontent.com/u/63302440?v=4");
 
 	embed1.SetImage(image1);
 
@@ -55,17 +50,13 @@ public Action SendDiscordWebhook(int client, int args)
 
 	embed1.SetThumbnail(thumbnail1);
 
-	EmbedAuthor author1 = new EmbedAuthor();
-	author1.SetName("Sarrus");
+	EmbedAuthor author1 = new EmbedAuthor("Sarrus");
 	author1.SetURL("https://tensor.fr");		// Optional
 	author1.SetIconURL("https://avatars.githubusercontent.com/u/63302440?s=40&v=4");				// Optional
 
 	embed1.SetAuthor(author1);
 
-	EmbedField field11 = new EmbedField();
-	field11.SetName("Field n°1");
-	field11.SetValue("The content of the field");
-	field11.SetInline(true);
+	EmbedField field11 = new EmbedField("Field n°1", "The content of the field", true);
 
 	embed1.AddField(field11);
 
