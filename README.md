@@ -1,6 +1,6 @@
 # discordWebhookAPI
 
-![Downloads](https://img.shields.io/github/downloads/Sarrus1/discordWebhookAPI/total) ![Last commit](https://img.shields.io/github/last-commit/Sarrus1/discordWebhookAPI) ![Open issues](https://img.shields.io/github/issues/Sarrus1/discordWebhookAPI) ![Closed issues](https://img.shields.io/github/issues-closed/Sarrus1/discordWebhookAPI) ![Size](https://img.shields.io/github/repo-size/Sarrus1/discordWebhookAPI) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Sarrus1/discordWebhookAPI/Compile%20with%20SourceMod)
+![Downloads](https://img.shields.io/github/downloads/Sarrus1/discordWebhookAPI/total.svg) ![Last commit](https://img.shields.io/github/last-commit/Sarrus1/discordWebhookAPI) ![Open issues](https://img.shields.io/github/issues/Sarrus1/discordWebhookAPI) ![Closed issues](https://img.shields.io/github/issues-closed/Sarrus1/discordWebhookAPI) ![Size](https://img.shields.io/github/repo-size/Sarrus1/discordWebhookAPI) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Sarrus1/discordWebhookAPI/Compile%20with%20SourceMod)
 
 ## Description
 
