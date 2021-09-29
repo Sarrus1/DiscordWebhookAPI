@@ -785,7 +785,7 @@ methodmap Embed < JSONObject
 	}
 
 	/**
-	 * Add a field to the embed.
+	 * Add a field to the embed. This will delete the field.
 	 * 
 	 * @param field   			Field to add to the embed.
 	 * @return        			The number of fields after the new one was added. -1 otherwise.
@@ -805,6 +805,7 @@ methodmap Embed < JSONObject
 		{
 			if(this.Set("fields", fields))
 			{
+				delete field;
 				return fields.Length;
 			}
 		}
@@ -944,7 +945,7 @@ methodmap Webhook < JSONObject
 	}
 
 	/**
-	 * Add an embed to the webhook.
+	 * Add an embed to the webhook. This will delete the handle to the embed.
 	 * 
 	 * @param embed   			Embed to add to the webhook.
 	 * @return        			The number of embeds after the new one was added. -1 otherwise.
@@ -964,6 +965,7 @@ methodmap Webhook < JSONObject
 		{
 			if(this.Set("embeds", embeds))
 			{
+				delete embed;
 				return embeds.Length;
 			}
 		}
