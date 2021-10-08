@@ -26,7 +26,7 @@ jobs:
         uses: Sarrus1/setup-sp@master
         with:
           version: ${{ matrix.SM_VERSION }}
-          version-file: example.sp
+          version-file: ./example.sp
 
       - name: Compile plugins
         run: |
