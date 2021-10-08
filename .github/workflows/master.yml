@@ -31,18 +31,18 @@ jobs:
           for file in example.sp
           do
             echo -e "\nCompiling $file..."
-            spcomp -E -w234 -O2 -v2 -i include $file -o example.smx
+            spcomp -E -w234 -O2 -v2 -i include $file
           done
+          ls
         working-directory: ${{ env.SCRIPTS_PATH }}
 
       - name: Changelog
         id: changelog
         uses: mindsers/changelog-reader-action@v2.0.0
 
-      - uses: papeloto/action-zip@v1
+      - uses: montudor/action-zip@v1
         with:
-          files: example.smx
-          dest: release.zip
+          args: zip -qq -r release.zip example.smx
 
       - name: Create Release
         uses: ncipollo/release-action@v1
