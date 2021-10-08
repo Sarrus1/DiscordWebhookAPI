@@ -18,9 +18,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set environment variables
-        run: |
-          # echo "SCRIPTS_PATH=" >> $GITHUB_ENV
-          echo "SCRIPTS_PATH=" >> $GITHUB_ENV
+        run: echo "SCRIPTS_PATH=" >> $GITHUB_ENV
       - name: Setup SourcePawn Compiler ${{ matrix.SM_VERSION }}
         id: setup_sp
         uses: Sarrus1/setup-sp@master
@@ -33,7 +31,7 @@ jobs:
           for file in example.sp
           do
             echo -e "\nCompiling $file..."
-            spcomp -E -w234 -O2 -v2 -i include $file
+            spcomp -E -w234 -O2 -v2 -i include $file -o ./plugins/example.smx
           done
         working-directory: ${{ env.SCRIPTS_PATH }}
 
@@ -43,7 +41,7 @@ jobs:
 
       - uses: papeloto/action-zip@v1
         with:
-          files: example.smx
+          files: ./plugins/example.smx
           dest: release.zip
 
       - name: Create Release
