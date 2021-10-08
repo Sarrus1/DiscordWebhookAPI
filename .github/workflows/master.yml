@@ -40,9 +40,11 @@ jobs:
         id: changelog
         uses: mindsers/changelog-reader-action@v2.0.0
 
-      - uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -r release.zip example.smx
+      - name: Install zip
+        uses: montudor/action-zip@v1
+
+      - name: Zip output
+        run: zip -qq -r function.zip example.smx
         working-directory: ${{ env.SCRIPTS_PATH }}
 
       - name: Create Release
