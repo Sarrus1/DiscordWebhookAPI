@@ -22,9 +22,11 @@ jobs:
           # echo "SCRIPTS_PATH=" >> $GITHUB_ENV
           echo "SCRIPTS_PATH=" >> $GITHUB_ENV
       - name: Setup SourcePawn Compiler ${{ matrix.SM_VERSION }}
-        uses: rumblefrog/setup-sp@master
+        id: setup_sp
+        uses: Sarrus1/setup-sp@master
         with:
           version: ${{ matrix.SM_VERSION }}
+          version-file: example.sp
 
       - name: Compile plugins
         run: |
@@ -33,4 +35,5 @@ jobs:
             echo -e "\nCompiling $file..."
             spcomp -E -w234 -O2 -v2 -i include $file
           done
+          echo ${{ steps.setup_sp.outputs.plugin-version }}
         working-directory: ${{ env.SCRIPTS_PATH }}
