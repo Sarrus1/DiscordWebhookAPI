@@ -32,6 +32,8 @@ jobs:
             spcomp -E -w234 -O2 -v2 -i include $file
           done
           ls
+          pwd
+          v${{ steps.setup_sp.outputs.plugin-version }}
         working-directory: ${{ env.SCRIPTS_PATH }}
 
       - name: Changelog
