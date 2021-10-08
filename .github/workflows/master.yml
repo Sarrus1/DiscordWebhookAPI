@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set environment variables
-        run: echo "SCRIPTS_PATH=" >> $GITHUB_ENV
+        run: echo SCRIPTS_PATH=$(pwd) >> $GITHUB_ENV
       - name: Setup SourcePawn Compiler ${{ matrix.SM_VERSION }}
         id: setup_sp
         uses: Sarrus1/setup-sp@master
@@ -32,7 +32,6 @@ jobs:
             spcomp -E -w234 -O2 -v2 -i include $file
           done
           ls
-          pwd
           v${{ steps.setup_sp.outputs.plugin-version }}
         working-directory: ${{ env.SCRIPTS_PATH }}
 
