@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        SM_VERSION: ["1.10", "1.11"]
 
     steps:
       - uses: actions/checkout@v2
@@ -23,7 +21,7 @@ jobs:
         id: setup_sp
         uses: Sarrus1/setup-sp@master
         with:
-          version: ${{ matrix.SM_VERSION }}
+          version: '1.10.x'
           version-file: ./example.sp
 
       - name: Compile plugins
