@@ -31,7 +31,7 @@ jobs:
           for file in example.sp
           do
             echo -e "\nCompiling $file..."
-            spcomp -E -w234 -O2 -v2 -i include $file -o ./plugins/example.smx
+            spcomp -E -w234 -O2 -v2 -i include $file -o example.smx
           done
         working-directory: ${{ env.SCRIPTS_PATH }}
 
@@ -41,7 +41,7 @@ jobs:
 
       - uses: papeloto/action-zip@v1
         with:
-          files: ./plugins/example.smx
+          files: example.smx
           dest: release.zip
 
       - name: Create Release
