@@ -35,5 +35,27 @@ jobs:
             echo -e "\nCompiling $file..."
             spcomp -E -w234 -O2 -v2 -i include $file
           done
-          echo ${{ steps.setup_sp.outputs.plugin-version }}
         working-directory: ${{ env.SCRIPTS_PATH }}
+
+      - name: Changelog
+        id: changelog
+        uses: mindsers/changelog-reader-action@v2.0.0
+
+      - uses: papeloto/action-zip@v1
+        with:
+          files: example.smx
+          dest: release.zip
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: v${{ steps.setup_sp.outputs.plugin-version }}
+          artifacts: "release.zip"
+          body: ${{ steps.changelog.outputs.changes }}
+          draft: false
+          allowUpdates: true
+          prerelease: true
+          replacesArtifacts: true

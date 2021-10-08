@@ -9,7 +9,7 @@ public Plugin myinfo =
 	name = "discordWebhookAPI",
 	author = "Sarrus",
 	description = "",
-	version = "1.0",
+	version = "1.0.0",
 	url = "https://github.com/Sarrus1/discordWebhookAPI"
 };
 
