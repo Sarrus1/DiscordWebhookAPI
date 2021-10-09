@@ -44,7 +44,7 @@ jobs:
         uses: montudor/action-zip@v1
 
       - name: Zip output
-        run: zip -qq -r function.zip example.smx
+        run: zip -qq -r release.zip example.smx
         working-directory: ${{ env.SCRIPTS_PATH }}
 
       - name: Create Release
