@@ -1,16 +1,15 @@
-#include <sourcemod>
 #include <discordWebhookAPI>
+#include <sourcemod>
 #pragma newdecls required
 #pragma semicolon 1
 
-
 public Plugin myinfo =
 {
-	name = "discordWebhookAPI",
-	author = "Sarrus",
+	name				= "discordWebhookAPI",
+	author			= "Sarrus",
 	description = "",
-	version = "1.0.0",
-	url = "https://github.com/Sarrus1/discordWebhookAPI"
+	version			= "1.0.0",
+	url					= "https://github.com/Sarrus1/discordWebhookAPI"
 };
 
 ConVar g_cvWebhook;
@@ -18,7 +17,7 @@ ConVar g_cvWebhook;
 public void OnPluginStart()
 {
 	g_cvWebhook = CreateConVar("sm_webhook_example", "", "The webhook URL of your Discord channel.", FCVAR_PROTECTED);
-	//SET THIS TO PROTECTED SO PEOPLE CAN'T SEE YOUR WEBHOOK URL!!
+	// SET THIS TO PROTECTED SO PEOPLE CAN'T SEE YOUR WEBHOOK URL!!
 
 	RegConsoleCmd("sm_send_webhook", SendDiscordWebhook, "Send a test webhook message.");
 
@@ -37,7 +36,7 @@ public Action SendDiscordWebhook(int client, int args)
 	embed1.SetColor(12000);
 
 	EmbedFooter footer1 = new EmbedFooter("Test embed footer n°1");
-	footer1.SetIconURL("https://img.icons8.com/cotton/64/000000/server.png");					// Optional
+	footer1.SetIconURL("https://img.icons8.com/cotton/64/000000/server.png");	 // Optional
 
 	embed1.SetFooter(footer1);
 	delete footer1;
@@ -54,8 +53,8 @@ public Action SendDiscordWebhook(int client, int args)
 	delete thumbnail1;
 
 	EmbedAuthor author1 = new EmbedAuthor("Sarrus");
-	author1.SetURL("https://tensor.fr");		// Optional
-	author1.SetIconURL("https://avatars.githubusercontent.com/u/63302440?s=40&v=4");				// Optional
+	author1.SetURL("https://tensor.fr");																							// Optional
+	author1.SetIconURL("https://avatars.githubusercontent.com/u/63302440?s=40&v=4");	// Optional
 
 	embed1.SetAuthor(author1);
 	delete author1;
@@ -125,7 +124,7 @@ public Action SendDiscordWebhook(int client, int args)
 public void OnWebHookExecuted(HTTPResponse response, DataPack pack)
 {
 	int client = pack.ReadCell();
-	//int args = pack.ReadCell();
+	// int args = pack.ReadCell();
 
 	PrintToServer("Processed client n°%s's webhook, status %d", client, response.Status);
 	if (response.Status != HTTPStatus_NoContent)
