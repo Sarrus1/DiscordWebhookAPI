@@ -1,6 +1,26 @@
-# discordWebhookAPI
-
-![Downloads](https://img.shields.io/github/downloads/Sarrus1/discordWebhookAPI/total) ![Last commit](https://img.shields.io/github/last-commit/Sarrus1/discordWebhookAPI) ![Open issues](https://img.shields.io/github/issues/Sarrus1/discordWebhookAPI) ![Closed issues](https://img.shields.io/github/issues-closed/Sarrus1/discordWebhookAPI) ![Size](https://img.shields.io/github/repo-size/Sarrus1/discordWebhookAPI) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Sarrus1/discordWebhookAPI/Compile%20with%20SourceMod)
+<div align="center">
+  <h1><code>DiscordWebhookAPI</code></h1>
+  <p>
+    <strong>Complete wrapper of the Discord Webhook API written in SourcePawn</strong>
+  </p>
+  <p style="margin-bottom: 0.5ex;">
+    <img
+        src="https://img.shields.io/github/downloads/Sarrus1/DiscordWebhookAPI/total"
+    />
+    <img
+        src="https://img.shields.io/github/last-commit/Sarrus1/DiscordWebhookAPI"
+    />
+    <img
+        src="https://img.shields.io/github/issues/Sarrus1/DiscordWebhookAPI"
+    />
+    <img
+        src="https://img.shields.io/github/issues-closed/Sarrus1/DiscordWebhookAPI"
+    />
+    <img
+        src="https://img.shields.io/github/repo-size/Sarrus1/DiscordWebhookAPI"
+    />
+  </p>
+</div>
 
 ## Description
 
@@ -9,6 +29,7 @@ An include featuring a well documented, complete wrapper of the Discord Webhook 
 This include's aim is to make it easy for SourceMod developpers to send embeded WebHook messages to Discord servers, with minimal dependencies.
 
 Contrary to other includes, discordWebhookAPI:
+
 - Does not required a separate plugin to run alongside of it.
 - Does not rely on SteamWorks or SM-Jansson.
 - Is well documented.
