@@ -33,6 +33,7 @@ Contrary to other includes, discordWebhookAPI:
 - Does not required a separate plugin to run alongside of it.
 - Does not rely on SteamWorks or SM-Jansson.
 - Is well documented.
+- Allows to edit sent webhook messages.
 - Provides a comprehensive documentation.
 - Uses methodmaps in order to provide support for the Transitional Syntax.
 
@@ -67,4 +68,6 @@ public void OnWebHookExecuted(HTTPResponse response, DataPack pack)
 
 ## Example
 
-![Example](https://github.com/Sarrus1/discordWebhookAPI/blob/master/example.png?raw=true)
+![Example-send](https://github.com/Sarrus1/discordWebhookAPI/blob/master/example.png?raw=true)
+
+![Example-edit](https://github.com/Sarrus1/discordWebhookAPI/blob/master/example-2.png?raw=true)
