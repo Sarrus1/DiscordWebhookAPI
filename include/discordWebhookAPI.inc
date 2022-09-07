@@ -985,8 +985,6 @@ methodmap Webhook < JSONObject
     Format(webhook_wait, sizeof webhook_wait, "%s?wait=true", webhook);
     HTTPRequest httpRequest = new HTTPRequest(webhook_wait);
     httpRequest.Post(view_as<JSON>(this), callback, data);
-    delete httpRequest;
-    return;
   }
 
   /**
@@ -1003,7 +1001,5 @@ methodmap Webhook < JSONObject
     Format(webhook_patch, sizeof webhook_patch, "%s/messages/%s", webhook, messageId);
     HTTPRequest httpRequest = new HTTPRequest(webhook_patch);
     httpRequest.Patch(view_as<JSON>(this), callback, data);
-    delete httpRequest;
-    return;
   }
 }
