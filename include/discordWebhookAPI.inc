@@ -1,4 +1,9 @@
-﻿#include <ripext>
+#if defined _discordWebhookAPI_included_
+  #endinput
+#endif
+#define _discordWebhookAPI_included_
+
+#include <ripext>
 
 methodmap EmbedFooter < JSONObject
 {
