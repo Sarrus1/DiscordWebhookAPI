@@ -984,6 +984,11 @@ methodmap Webhook < JSONObject
     char webhook_wait[1024];
     Format(webhook_wait, sizeof webhook_wait, "%s?wait=true", webhook);
     HTTPRequest httpRequest = new HTTPRequest(webhook_wait);
+    #if defined DEBUG
+      char debug[9999];
+      this.toString(debug, sizeof debug);
+      PrintToServer(debug);
+    #endif
     httpRequest.Post(view_as<JSON>(this), callback, data);
     delete httpRequest;
     return;
