@@ -881,6 +881,17 @@ methodmap Webhook < JSONObject
   }
 
   /**
+   * Set the Thread Name of the webhook.
+   * 
+   * @param threadName    Thread Name of the webhook. (char max is 1000)
+   * @return              True on success. False otherwise.
+   */
+  public bool SetThreadName(char[] threadName)
+  {
+    return this.SetString("thread_name", threadName);
+  }
+
+  /**
    * Retrieve the avatar_url of the webhook.
    * 
    * @param buffer       String buffer to store value.
@@ -983,12 +994,17 @@ methodmap Webhook < JSONObject
    * @param webhook       URL of the webhook. MAKE SURE THERE IS NO TRAILING `/`.
    * @param callback      Callback function called when the HTTP request has been processed.
    * @param data          Optional value to pass to the callback function.
+   * @param threadID      Optional Thread ID for push the message in a specific thread.
    */
-  public void Execute(const char[] webhook, HTTPRequestCallback callback, any data = 0)
+  public void Execute(const char[] webhook, HTTPRequestCallback callback, any data = 0, const char[] threadID = "")
   {
-    char webhook_wait[1024];
-    Format(webhook_wait, sizeof webhook_wait, "%s?wait=true", webhook);
-    HTTPRequest httpRequest = new HTTPRequest(webhook_wait);
+    char webhook_query[1024];
+    if (!threadID[0])
+        Format(webhook_query, sizeof webhook_query, "%s?wait=true", webhook);
+    else
+        Format(webhook_query, sizeof webhook_query, "%s?thread_id=%s&?wait=true", webhook, threadID);
+
+    HTTPRequest httpRequest = new HTTPRequest(webhook_query);
     #if defined DEBUG
       char debug[9999];
       this.toString(debug, sizeof debug);

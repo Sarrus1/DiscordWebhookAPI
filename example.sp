@@ -6,18 +6,26 @@
 public Plugin myinfo =
 {
   name        = "discordWebhookAPI",
-  author      = "Sarrus",
+  author      = "Sarrus, .Rushaway",
   description = "",
-  version     = "1.0.0",
+  version     = "1.1.0",
   url         = "https://github.com/Sarrus1/discordWebhookAPI"
 };
 
 ConVar g_cvWebhook;
+ConVar g_cvThreadID;
+ConVar g_cvThreadName;
 
 public void OnPluginStart()
 {
   g_cvWebhook = CreateConVar("sm_webhook_example", "", "The webhook URL of your Discord channel.", FCVAR_PROTECTED);
   // SET THIS TO PROTECTED SO PEOPLE CAN'T SEE YOUR WEBHOOK URL!!
+
+  g_cvThreadID = CreateConVar("sm_webhook_thread_id", "", "The thread_id of your Discord forums. (Will reply to an existing thread)", FCVAR_PROTECTED);
+  // SET THIS TO PROTECTED SO PEOPLE CAN'T SEE YOUR THREAD_ID !!
+
+  g_cvThreadName = CreateConVar("sm_webhook_thread_name", "", "The Thread Name of your Discord forums. (If not empty, will create a new thread)");
+  //  THIS CVAR WILL ALWAYS SURPASS thread_id IF NOT EMPTY !!
 
   RegConsoleCmd("sm_send_webhook", SendDiscordWebhook, "Send a test webhook message.");
 
@@ -110,12 +118,37 @@ Action SendDiscordWebhook(int client, int args)
   char szWebhookURL[1000];
   g_cvWebhook.GetString(szWebhookURL, sizeof szWebhookURL);
 
+  // Small example for add checks before continue
+  if (!szWebhookURL[0])
+  {
+    LogError("The webhook URL of your Discord channel was not found or specified.");
+    delete webhook;
+    return Plugin_Handled;
+  }
+
+  char sThreadID[100];
+  g_cvThreadID.GetString(sThreadID, sizeof sThreadID);
+
+  char sThreadName[1000]; 
+  g_cvThreadName.GetString(sThreadName, sizeof sThreadName);
+
+  if (strlen(sThreadName) > 0)
+  {
+    webhook.SetThreadName(sThreadName);
+    // discord API doc: If thread_name is provided, a thread with that name will be created in the forum channel
+    // error: #220002	Webhooks posted to forum channels cannot have both a thread_name and thread_id
+    // So no need to continue for thread_id method
+    sThreadID[0] = '\0';
+  }
+
   DataPack pack = new DataPack();
   pack.WriteCell(client);
   pack.WriteCell(args);
   pack.Reset();
 
-  webhook.Execute(szWebhookURL, OnWebHookExecuted, pack);
+  // Backwards compat: This version still work PERFECTLY. (It just doesn't support thread reply function)
+  // webhook.Execute(szWebhookURL, OnWebHookExecuted, pack);
+  webhook.Execute(szWebhookURL, OnWebHookExecuted, pack, sThreadID); // sThreadID is optinal 
   delete webhook;
 
   return Plugin_Continue;
@@ -153,6 +186,13 @@ void editWebhook(const char[] messageId, int client)
 
   char szWebhookURL[1000];
   g_cvWebhook.GetString(szWebhookURL, sizeof szWebhookURL);
+
+  if (!szWebhookURL[0])
+  {
+    LogError("The webhook URL of your Discord channel was not found or specified.");
+    delete webhook;
+    return;
+  }
 
   DataPack pack = new DataPack();
   pack.WriteCell(client);
