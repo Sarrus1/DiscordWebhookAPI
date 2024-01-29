@@ -3,6 +3,11 @@
 #endif
 #define _discordWebhookAPI_included_
 
+#define DiscordWebhookAPI_VERSION       "1.0.1"
+#define WEBHOOK_MSG_MAX_SIZE            2000
+#define WEBHOOK_URL_MAX_SIZE            1000
+#define WEBHOOK_THREAD_NAME_MAX_SIZE    100
+
 #include <ripext>
 
 methodmap EmbedFooter < JSONObject
