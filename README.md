@@ -5,9 +5,6 @@
   </p>
   <p style="margin-bottom: 0.5ex;">
     <img
-        src="https://img.shields.io/github/downloads/Sarrus1/DiscordWebhookAPI/total"
-    />
-    <img
         src="https://img.shields.io/github/last-commit/Sarrus1/DiscordWebhookAPI"
     />
     <img
